@@ -1,0 +1,406 @@
+/* Arena Split Panel Layout */
+.arena-layout {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-main);
+    overflow: hidden;
+    min-height: calc(100vh - 120px);
+    position: relative;
+}
+
+/* Left Panel - User Browser */
+.left-panel {
+    width: 260px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    background-color: #0f0f0f;
+    flex-shrink: 0;
+}
+
+/* Filter Bar */
+.filter-bar {
+    display: flex;
+    padding: 0.8rem;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+}
+
+.filter-chip {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    color: var(--text-secondary);
+    padding: 0.35rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+.filter-chip:hover {
+    color: var(--text-primary);
+    border-color: var(--text-dim);
+}
+
+.filter-chip.active {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.25);
+}
+
+/* Search Bar */
+.search-container {
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 0.8rem;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+}
+
+.search-input {
+    width: 100%;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    padding: 0.5rem 1rem 0.5rem 2.2rem;
+    font-size: 0.85rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: var(--accent-blue);
+    box-shadow: var(--glow-blue);
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.5rem;
+    color: var(--text-dim);
+    pointer-events: none;
+}
+
+/* User List & Rows */
+.user-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-list-empty {
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+.user-row {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    border-bottom: 1px solid rgba(46, 46, 46, 0.4);
+    gap: 0.75rem;
+    transition: all 0.2s ease;
+    user-select: none;
+    animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.user-row:hover {
+    background-color: rgba(37, 37, 37, 0.3);
+}
+
+.user-row.active {
+    background-color: var(--bg-tertiary);
+    border-left-color: var(--accent-green);
+}
+
+/* Circular Avatars */
+.avatar-circle-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.avatar-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.avatar-pink {
+    background-color: #d500f9; /* Pink F avatar */
+    box-shadow: 0 0 10px rgba(213, 0, 249, 0.2);
+}
+
+.avatar-blue {
+    background-color: #2979ff; /* Blue M avatar */
+    box-shadow: 0 0 10px rgba(41, 121, 255, 0.2);
+}
+
+.user-row .status-indicator {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    border: 2px solid var(--bg-secondary);
+}
+
+.status-online {
+    background-color: var(--accent-green);
+    box-shadow: var(--glow-green);
+}
+
+.status-offline {
+    background-color: #777777;
+    box-shadow: none;
+}
+
+/* User Card Text */
+.user-info {
+    flex: 1;
+    min-width: 0; /* Ensures truncation works */
+}
+
+.user-row-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.15rem;
+}
+
+.user-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-meta-sub {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.gender-icon {
+    font-weight: 700;
+}
+
+.gender-F { color: #ff80ab; }
+.gender-M { color: #82b1ff; }
+
+.interest-tag-pill {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    border-radius: 4px;
+    padding: 0.05rem 0.3rem;
+    font-size: 0.65rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 65px;
+}
+
+/* Right Panel - Chat Area */
+.right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #0b0b0b;
+    position: relative;
+}
+
+/* Empty State */
+.chat-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    text-align: center;
+    padding: 3rem;
+    gap: 1.25rem;
+    color: var(--text-secondary);
+}
+
+.empty-icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2.5px dashed var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
+}
+
+.chat-empty-state h2 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+}
+
+.chat-empty-state p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    max-width: 320px;
+}
+
+/* Active Chat Viewport */
+.chat-viewport {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex: 1;
+}
+
+/* Header Submeta */
+.chat-header-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.chat-header-submeta {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.chat-header-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 0.4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.chat-header-action-btn:hover {
+    background-color: var(--surface);
+    color: var(--text-primary);
+}
+
+/* Back Button Mobile */
+.back-btn {
+    display: none; /* Desktop hidden */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 0.4rem;
+    border-radius: 50%;
+}
+
+.back-btn:hover {
+    background-color: var(--surface);
+    color: var(--text-primary);
+}
+
+/* Attach Button input bar */
+.attach-btn {
+    position: absolute;
+    left: 0.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    transition: color 0.2s ease;
+}
+
+.attach-btn:hover {
+    color: var(--text-primary);
+}
+
+/* Message group avatar styling */
+.message-wrapper.stranger {
+    padding-left: 2rem;
+}
+
+.message-wrapper .msg-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    position: absolute;
+    left: -2rem;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.message-bubble {
+    position: relative;
+}
+
+/* Mobile panel sliding states */
+@media (max-width: 767px) {
+    .left-panel {
+        width: 100%;
+        border-right: none;
+    }
+    
+    .right-panel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .arena-layout.chat-open .right-panel {
+        transform: translateX(0);
+    }
+    
+    .back-btn {
+        display: inline-flex;
+    }
+    
+    .chat-empty-state {
+        display: none; /* Not needed on mobile since we show list first */
+    }
+    
+    .nav-links {
+        display: none; /* Hide nav link list, let RandomChat float */
+    }
+}

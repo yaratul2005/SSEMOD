@@ -1,0 +1,190 @@
+/* Input styling */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 420px;
+    gap: 0.5rem;
+    text-align: left;
+}
+
+.input-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.text-input {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    padding: 0.8rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.text-input:focus {
+    border-color: var(--accent-blue);
+    box-shadow: var(--glow-blue);
+}
+
+/* Button styling */
+.btn {
+    align-items: center;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    gap: 0.5rem;
+    justify-content: center;
+    padding: 0.8rem 1.6rem;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    outline: none;
+}
+
+.btn-primary {
+    background: var(--gradient-match);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 230, 118, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-green);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--border);
+}
+
+.btn-danger {
+    background-color: rgba(255, 23, 68, 0.1);
+    border: 1px solid rgba(255, 23, 68, 0.3);
+    color: var(--accent-red);
+}
+
+.btn-danger:hover {
+    background-color: rgba(255, 23, 68, 0.25);
+    box-shadow: 0 0 10px rgba(255, 23, 68, 0.2);
+}
+
+.btn-pulse {
+    animation: buttonPulse 2s infinite;
+}
+
+/* Spinner Component */
+.spinner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 3px dashed var(--accent-green);
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+    position: relative;
+    box-shadow: var(--glow-green);
+}
+
+.spinner::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 2px dashed var(--accent-blue);
+    border-bottom: 2px solid transparent;
+    border-radius: 50%;
+    animation: spinReverse 1s linear infinite;
+}
+
+/* Custom Interactive Toast Messages */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+}
+
+.toast-container.active {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.toast {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    padding: 0.8rem 1.5rem;
+    box-shadow: var(--shadow-main);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.toast-success {
+    border-left: 4px solid var(--accent-green);
+}
+
+.toast-info {
+    border-left: 4px solid var(--accent-blue);
+}
+
+.toast-warning {
+    border-left: 4px solid var(--accent-yellow);
+}
+
+.toast-danger {
+    border-left: 4px solid var(--accent-red);
+}
+
+/* Sound Switch Toggle */
+.sound-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.sound-toggle:hover {
+    background-color: var(--surface);
+    color: var(--text-primary);
+}

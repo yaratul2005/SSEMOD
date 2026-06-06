@@ -1,0 +1,175 @@
+/* Header Nav Links & Toggles */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.nav-btn:hover, .nav-btn.active {
+    color: var(--text-primary);
+}
+
+.nav-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 15%;
+    width: 70%;
+    height: 2px;
+    background-color: var(--accent-green);
+    border-radius: 2px;
+    box-shadow: var(--glow-green);
+}
+
+/* RandomChat Header Pill Button */
+.random-chat-badge {
+    background: var(--gradient-match);
+    border: none;
+    border-radius: 50px;
+    color: #ffffff !important;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 1.1rem;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    outline: none;
+}
+
+.random-chat-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--glow-green);
+}
+
+.random-chat-badge:active {
+    transform: translateY(0);
+}
+
+/* Pulsing Green Dot next to button */
+.pulse-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: inline-block;
+    animation: indicatorPulse 1.6s infinite ease-in-out;
+}
+
+@keyframes indicatorPulse {
+    0%, 100% {
+        transform: scale(0.6);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Settings button gear */
+.settings-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.settings-btn:hover {
+    background-color: var(--surface);
+    color: var(--text-primary);
+    transform: rotate(30deg);
+}
+
+/* Modal Layout Tweaks */
+.modal-body select.text-input {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23a0a0a0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 14px;
+    padding-right: 2.5rem;
+    appearance: none; /* Hide default dropdown arrow */
+}
+
+/* Phase Transitions inside RandomChat Modal */
+.random-phase-view {
+    animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    width: 100%;
+}
+
+/* Green Flash on Match */
+.flash-green-match {
+    animation: flashGreen 0.8s ease-out;
+}
+
+@keyframes flashGreen {
+    0% {
+        background-color: rgba(0, 230, 118, 0);
+    }
+    30% {
+        background-color: rgba(0, 230, 118, 0.2);
+        box-shadow: inset 0 0 25px rgba(0, 230, 118, 0.4);
+    }
+    100% {
+        background-color: rgba(0, 230, 118, 0);
+    }
+}
+
+/* Red Flash on Disconnect */
+.flash-red-disconnect {
+    animation: flashRed 0.8s ease-out;
+}
+
+@keyframes flashRed {
+    0% {
+        background-color: rgba(255, 23, 68, 0);
+    }
+    30% {
+        background-color: rgba(255, 23, 68, 0.25);
+        box-shadow: inset 0 0 25px rgba(255, 23, 68, 0.4);
+    }
+    100% {
+        background-color: rgba(255, 23, 68, 0);
+    }
+}
+
+/* Direct Chat Notification Toast Bar */
+.incoming-chat-notification-toast {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--accent-green);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    color: var(--text-primary);
+    box-shadow: var(--shadow-main), var(--glow-green);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    pointer-events: auto;
+    animation: modalSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.incoming-chat-notification-toast strong {
+    color: var(--accent-green);
+}
